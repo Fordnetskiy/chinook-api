@@ -1,0 +1,53 @@
+{
+  "name": "chinook-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint:ts": "eslint .",
+    "lint:ts:fix": "eslint . --fix",
+    "format": "prettier . --write",
+    "lint": "npm run lint:ts",
+    "lint:fix": "npm run lint:ts:fix ; npm run format"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fordnetskiy/chinook-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Fordnetskiy/chinook-api/issues"
+  },
+  "homepage": "https://github.com/Fordnetskiy/chinook-api#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.6.0",
+    "@types/pg": "^8.20.0",
+    "eslint": "^10.2.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "globals": "^17.5.0",
+    "prettier": "^3.8.3",
+    "prisma": "^7.8.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.59.1"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.8.0",
+    "@prisma/client": "^7.8.0",
+    "bcrypt": "^6.0.0",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.4.1",
+    "helmet": "^8.1.0",
+    "http-errors": "^2.0.1",
+    "http-problem-details": "^0.1.7",
+    "pg": "^8.20.0",
+    "uuid": "^14.0.0",
+    "winston": "^3.19.0",
+    "zod": "^4.3.6"
+  }
+}
