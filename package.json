@@ -24,6 +24,7 @@
   "homepage": "https://github.com/Fordnetskiy/chinook-api#readme",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@types/bcrypt": "^6.0.0",
     "@types/express": "^5.0.6",
     "@types/node": "^25.6.0",
     "@types/pg": "^8.20.0",
@@ -33,6 +34,7 @@
     "globals": "^17.5.0",
     "prettier": "^3.8.3",
     "prisma": "^7.8.0",
+    "tsx": "^4.21.0",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.59.1"
   },
@@ -47,7 +49,7 @@
     "http-errors": "^2.0.1",
     "http-problem-details": "^0.1.7",
     "pg": "^8.20.0",
-    "uuid": "^14.0.0",
+    "redis": "^5.12.1",
     "winston": "^3.19.0",
     "zod": "^4.3.6"
   }

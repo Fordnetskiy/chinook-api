@@ -1,19 +1,28 @@
 import express from 'express';
 import helmet from 'helmet';
+import v1Routes from './modules/index';
 import { ErrorHandler, ResourceNotFound } from './middlewares/error.handler';
+import { logger } from './utils/logger';
 
 const ServerStart = () => {
-  const app = express();
+  try {
+    const app = express();
 
-  app
-    .use(helmet())
-    .use(express.json())
-    .use(express.urlencoded({ extended: true }));
+    app
+      .use(helmet())
+      .use(express.json())
+      .use(express.urlencoded({ extended: true }));
 
-  app.use(ResourceNotFound);
-  app.use(ErrorHandler);
+    app.use('/api/v1', v1Routes);
 
-  return app;
+    app.use(ResourceNotFound);
+    app.use(ErrorHandler);
+
+    return app;
+  } catch (e) {
+    logger.error('Failed to start server', e);
+    process.exit(1);
+  }
 };
 
 export default ServerStart;
