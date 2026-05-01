@@ -11,9 +11,9 @@ class AuthController {
       const result = await AuthService.register(req.body);
 
       res.status(201).json({
-        success: true,
-        message: 'Successful registration',
+        status: 'success',
         data: result,
+        message: 'Successful registration',
       });
     } catch (e) {
       next(e);
@@ -25,9 +25,24 @@ class AuthController {
       const result = await AuthService.login(req.body);
 
       res.status(200).json({
-        success: true,
-        message: 'Login success',
+        status: 'success',
         token: result,
+        message: 'Login success',
+      });
+    } catch (e) {
+      next(e);
+    }
+  };
+
+  logout = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const token: Request['token'] = req.token;
+
+      await AuthService.logout(token);
+
+      res.status(200).json({
+        status: 'success',
+        message: 'Logout success',
       });
     } catch (e) {
       next(e);

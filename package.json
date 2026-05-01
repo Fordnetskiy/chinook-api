@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "dev": "npx tsx --watch src/server.ts",
     "lint:ts": "eslint .",
     "lint:ts:fix": "eslint . --fix",
     "format": "prettier . --write",

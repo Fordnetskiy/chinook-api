@@ -6,7 +6,7 @@ import bcrypt from 'bcrypt';
 import * as crypto from 'node:crypto';
 
 class AuthService {
-  private readonly SALT_ROUNDS: number = 10;
+  private readonly SALT_ROUNDS: number = 12;
 
   register = async (data: TRegister) => {
     const { email, password } = data;
@@ -80,7 +80,7 @@ class AuthService {
       });
     }
 
-    const token: string = crypto.randomBytes(16).toString('hex');
+    const token: string = crypto.randomBytes(32).toString('hex');
 
     await RedisClient.set(
       `access:${token}`,
@@ -94,6 +94,13 @@ class AuthService {
     );
 
     return token;
+  };
+
+  logout = async (token: string | undefined) => {
+    if (!token) {
+      throw createError(401, 'Token not provided');
+    }
+    return await RedisClient.del(`access:${token}`);
   };
 }
 

@@ -19,18 +19,20 @@ export const AuthNCheck = async (
     }
 
     const token = authHeader.split(' ')[1];
-
-    const check = await RedisClient.get(`access:${token}`);
-
-    if (!check) {
-      next(
-        createError(401, 'Invalid or expired token', {
-          description: 'Token not found or expired',
-        }),
-      );
+    if (!token) {
+      next(createError(401, 'Invalid token format'));
     }
 
-    req.user = JSON.parse(check);
+    const userData = await RedisClient.get(`access:${token}`);
+
+    if (!userData) {
+      throw createError(401, 'Invalid or expired token', {
+        description: 'Token not found or expired',
+      });
+    }
+
+    req.user = JSON.parse(userData);
+    req.token = token;
     next();
   } catch (e) {
     next(createError(500, 'Authentication middleware error'));
