@@ -85,12 +85,12 @@ class AuthService {
     await RedisClient.set(
       `access:${token}`,
       JSON.stringify({
-        id: user.id,
+        userId: user.id,
         role: user.role,
         customerId: user.customer_id,
         employeeId: user.employee_id,
       }),
-      { EX: 60 * 5 },
+      { EX: 60 * 10 },
     );
 
     return token;
