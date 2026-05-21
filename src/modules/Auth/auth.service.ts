@@ -90,7 +90,7 @@ class AuthService {
         customerId: user.customer_id,
         employeeId: user.employee_id,
       }),
-      { EX: 60 * 10 },
+      { EX: 60 * 15 },
     );
 
     return token;
