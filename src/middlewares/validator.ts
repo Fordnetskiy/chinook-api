@@ -23,7 +23,11 @@ export const validator = (schemas: ValidationSchemas) => {
         errors.query = result.error.flatten().fieldErrors;
         hasError = true;
       } else {
-        req.query = result.data as any;
+        for (const key in req.query) {
+          delete req.query[key];
+        }
+
+        Object.assign(req.query, result.data);
       }
     }
 

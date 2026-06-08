@@ -37,7 +37,7 @@ const config: Config = {
     '!src/**/*.interface.ts',
     '!src/**/*.schema.ts',
     '!src/**/*.type.ts',
-    '!src/**/index.ts',
+    '!src/**/catalog.router.ts',
     '!src/config/**',
     '!src/types/**',
   ],

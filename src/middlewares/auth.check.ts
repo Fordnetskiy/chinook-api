@@ -41,3 +41,15 @@ export const AuthNCheck = async (
     next(e);
   }
 };
+
+export const RoleCheck = (roles: string[]) => {
+  return (req: Request, _res: Response, next: NextFunction) => {
+    if (!req.user || !roles.includes(req.user.role)) {
+      return next(
+        createError(403, 'You don`t have permission for this action'),
+      );
+    }
+
+    next();
+  };
+};

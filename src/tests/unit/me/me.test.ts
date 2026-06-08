@@ -1,7 +1,7 @@
 import MeService from '../../../modules/Me/me.service';
 import { prisma } from '../../../config/db';
 import { meUpdDtoIn, meUpdDtoOut } from '../../../modules/Me/me.mapper';
-import { customer } from '../../../generated/prisma/client';
+import { customer } from '@prisma/client';
 
 jest.mock('../../../config/db.ts', () => ({
   prisma: {
